@@ -78,7 +78,7 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                                             <a class="nav-link" href="#0" data-no="4">CARRITO</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="#0" data-no="5">CONTACTO</a>
+                                                            <a class="nav-link" href="#0" data-no="5">ENTRAR</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -88,6 +88,40 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                     </div>
 
                                     <ul class="cd-hero-slider">
+
+                                        <!--Shopping Form-->
+                                        <div id="shopping-popup" class="white-popup mfp-hide">
+                                          <div class="imgDes">
+                                          <img src="img/Men/shazamShirtMen.jpg" alt="Image" class="img-fluid tm-img">
+                                          </div>
+
+
+                                          <h1 class="tm-contact-info" align=left>Playera Shazam</h1>
+                                          <p class="tm-text" align=left>Playera suave y muchas descripciones chidas y asi y asi y asi y asi y asi y asi y asi y asi y asi y asi y asi y asi y asi y asi y asi</p>
+                                          <h3 class="tm-text" align=left>$449.99</h3>
+
+
+                                          <fieldset style="border:0;">
+                                            <form action="index.html" method="post">
+
+                                              <div class="form-group">
+                                                <label for="clothe_size">Choose size:</label>
+                                                <select id="clothe_size" required/>
+                                                  <option value="large">L</option>
+                                                  <option value="medium">M</option>
+                                                  <option value="short">S</option>
+                                                </select>
+                                              </div>
+
+                                              <div class="form-group">
+                                                  Quantity (up to 5):
+                                                  <input type="number" name="quantity" min="1" max="5">
+                                              </div>
+
+                                              <button type="submit" class="pull-xs-right tm-submit-btn">Agregar al Carrito</button>
+                                            </form>
+                                          </fieldset>
+                                        </div>
 
                                         <!-- Page 1 Gallery One -->
                                         <li class="selected">
@@ -102,7 +136,8 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                                                     <figcaption>
                                                                         <h2 class="tm-figure-title">Playera <span><strong>Shazam</strong></span></h2>
                                                                         <p class="tm-figure-description">$449.99</p>
-                                                                        <a href="">View more</a>
+                                                                        <a href="#shopping-popup" class="open-popup-link">View more</a>
+                                                                      <!--  <a href="">View more</a>-->
                                                                     </figcaption>
                                                                 </figure>
                                                             </div>
@@ -192,7 +227,15 @@ http://www.templatemo.com/tm-500-fluid-gallery
 
                                                             <div class="grid-item">
                                                                 <figure class="effect-sadie">
+<<<<<<< HEAD
                                                                     <img src="img/women/ironmanShirtWomen.png" alt="Image" class="img-fluid tm-img">
+=======
+<<<<<<< HEAD
+                                                                    <img src="img/women/ironManShirtWomen.png" alt="Image" class="img-fluid tm-img">
+=======
+                                                                    <img src="img/women/ironmanShirtWomen.png" alt="Image" class="img-fluid tm-img">
+>>>>>>> 130f34a9cbe75a3e0427566285fd969237a611af
+>>>>>>> quantum_realm
                                                                     <figcaption>
                                                                         <h2 class="tm-figure-title">Playera <span><strong>Ironman</strong></span></h2>
                                                                         <p class="tm-figure-description">$320.50</p>
@@ -465,9 +508,31 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                                                     </div>
 
                                                                     <div class="tm-bg-white-translucent text-xs-left tm-textbox tm-2-col-textbox-2 tm-textbox-padding tm-textbox-padding-contact">
-                                                                        <h2 class="tm-contact-info">4466 Old New St 28290, SF, California</h2>
-                                                                        <!-- google map goes here -->
-                                                                        <div id="google-map"></div>
+                                                                      <h2 class="tm-contact-info">Feel free to say Hi!</h2>
+                                                                      <p class="tm-text">Nulla sed urna at ligula maximus blandit. Mauris nisi ligula, ultricies ac diam id, hendrerit tincidunt ipsum. Maecenas non massa justo.</p>
+
+                                                                      <!-- contact form -->
+                                                                      <form action="index.html" method="post" class="tm-contact-form">
+
+                                                                          <div class="form-group">
+                                                                              <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Name"  required/>
+                                                                          </div>
+
+                                                                          <div class="form-group">
+                                                                              <input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Email"  required/>
+                                                                          </div>
+
+                                                                          <div class="form-group">
+                                                                              <textarea id="contact_message" name="contact_message" class="form-control" rows="5" placeholder="Message" required></textarea>
+                                                                          </div>
+
+                                                                          <button type="submit" class="pull-xs-right tm-submit-btn">Send</button>
+
+                                                                      </form>
+
+                                                                        <!--<h2 class="tm-contact-info">4466 Old New St 28290, SF, California</h2>
+                                                                         google map goes here
+                                                                        <div id="google-map"></div>-->
                                                                     </div>
 
                                                                 </div>
@@ -567,7 +632,13 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                             gallery:{enabled:true}
                                         });
 
-                        				/* Gallery Two pop up
+                                //Shopping popup
+                                $('.open-popup-link').magnificPopup({
+                                  type:'inline',
+                                  midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+                                });
+
+                                /* Gallery Two pop up
                                         -----------------------------------------*/
                         				$('.gallery-two').magnificPopup({
                                             delegate: 'a',
