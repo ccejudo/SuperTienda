@@ -1,3 +1,9 @@
+<?php
+    if(!isset($_SESSION))
+    {
+        session_start();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,7 +87,15 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                                             <a class="nav-link" href="#0" data-no="4">CARRITO</a>
                                                         </li>
                                                         <li class="nav-item">
-                                                            <a class="nav-link" href="#0" data-no="5">ENTRAR</a>
+                                                            <a class="nav-link" href="#0" data-no="5">
+                                                            <?php
+                                                            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+                                                                echo "".$_SESSION['username']."";
+                                                            }else{
+                                                                echo "ENTRAR";
+                                                            }
+                                                            ?>
+                                                        </a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -147,7 +161,19 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                                                     <div class="tm-bg-white-translucent text-xs-left tm-textbox tm-textbox-padding">
                                                                         <a class="navbar-brand text-uppercase" href=""><img src="img/Shopping-Cart-icon.png" alt="Super Tienda" ></i></a>
 
-                                                                        <h2 class="tm-text-title">CARRITO CRISTOPHER</h2>
+
+                                                                        <h2 class="tm-text-title">CARRITO <?php
+
+                                                                        if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+                                                                            echo "".$_SESSION["name_user"]."";
+                                                                        }else{
+                                                                            echo "INVITADO";
+                                                                        }
+
+
+                                                                        ?> </h2>
+
+
                                                                         <br /> <br />
                                                                         <!--Table Style-->
                                                                         <style>

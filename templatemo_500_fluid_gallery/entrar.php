@@ -27,8 +27,9 @@ $username = mysqli_real_escape_string($connection,$username);
 $password = mysqli_real_escape_string($connection,$password);
 
 $sql = "SELECT * FROM CLIENTE WHERE username='$username' and password='$password'";
-$nombre = "SELECT cliente_nombre FROM CLIENTE WHERE username='$username' and password='$password'";
 $result=mysqli_query($connection,"$sql");
+$row = mysqli_fetch_array($result);
+$nombre=$row['cliente_nombre'];
 
 // Mysql_num_row is counting table row
 $count=mysqli_num_rows($result);
@@ -38,9 +39,8 @@ if($count==1){
     session_start();
     $_SESSION['loggedin'] = true;
     $_SESSION['username'] = $username;
-    echo '<script type="text/javascript">
-           window.location = "http://serene-savannah-13260.herokuapp.com"
-      </script>';
+    $_SESSION['name_user'] = $nombre;
+    include 'index-color.php';
 }else{
     echo '<script type="text/javascript">
            window.location = "http://theroommovie.com/"

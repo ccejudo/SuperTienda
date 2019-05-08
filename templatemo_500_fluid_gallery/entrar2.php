@@ -1,6 +1,8 @@
 	<?php  
-
-	echo"
+	if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+    //echo "Welcome to the member's area, " . $_SESSION['username'] . "!";
+	} else {
+	    echo"
 	<script>
 
 	var usr = doc.getElementById('log_user').value;
@@ -85,4 +87,6 @@
 	
 		</div>";
 		//mequieromorrrrri
+	} 
+
 	?>
