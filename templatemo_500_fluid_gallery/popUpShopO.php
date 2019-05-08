@@ -1,5 +1,5 @@
 <?php
-	$quer = mysqli_query($connection, "select * from supertienda.PRODUCTO where cat_id = 'HOM' and (pro_talla = 'S' or pro_talla = 'U');");
+	$quer = mysqli_query($connection, "select * from PRODUCTO where cat_id = 'OTR';");
 
 	while ($row_as = mysqli_fetch_assoc($quer)) {
 		echo "<div class='grid-item'>";
@@ -25,7 +25,7 @@
 
 
 		echo "<fieldset style='border:0;'>";
-			echo "<form action='index.html' method='post'>";
+			echo "<form action='index-color.php' method='post'>";
 
 			if ($row_as['pro_talla'] == 'S') {
 				echo "<div class='form-group'>";
