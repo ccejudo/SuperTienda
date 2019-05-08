@@ -49,6 +49,27 @@ http://www.templatemo.com/tm-500-fluid-gallery
 
     <body>
 
+      <!--Connection to mysql-->
+      <?php
+
+              error_reporting(E_ALL);
+              ini_set('display_errors', 1);
+
+
+      		$server = "";
+      		$username = "";
+      		$password = "";
+      		$db = "";
+
+      		$connection = mysqli_connect("$server", "$username", "$password", "$db");
+
+              if (!$connection){
+                      die("NO SE LOGRÓ CONECTAR CON EL SERVIDOR");
+              }
+
+              //$quer = mysqli_query($connection, "select * from supertienda.PRODUCTO where cat_id = 'HOM';");
+      ?>
+
         <!-- Content -->
         <div class="cd-hero">
 
@@ -89,40 +110,6 @@ http://www.templatemo.com/tm-500-fluid-gallery
 
                                     <ul class="cd-hero-slider">
 
-                                        <!--Shopping Form-->
-                                        <div id="shopping-popup" class="white-popup mfp-hide">
-                                          <div class="imgDes">
-                                          <img src="img/Men/shazamShirtMen.jpg" alt="Image" class="img-fluid tm-img">
-                                          </div>
-
-
-                                          <h1 class="tm-contact-info" align=left>Playera Shazam</h1>
-                                          <p class="tm-text" align=left>Playera suave y muchas descripciones chidas y asi y asi y asi y asi y asi y asi y asi y asi y asi y asi y asi y asi y asi y asi y asi</p>
-                                          <h3 class="tm-text" align=left>$449.99</h3>
-
-
-                                          <fieldset style="border:0;">
-                                            <form action="index.html" method="post">
-
-                                              <div class="form-group">
-                                                <label for="clothe_size">Choose size:</label>
-                                                <select id="clothe_size" required/>
-                                                  <option value="large">L</option>
-                                                  <option value="medium">M</option>
-                                                  <option value="short">S</option>
-                                                </select>
-                                              </div>
-
-                                              <div class="form-group">
-                                                  Quantity (up to 5):
-                                                  <input type="number" name="quantity" min="1" max="5">
-                                              </div>
-
-                                              <button type="submit" class="pull-xs-right tm-submit-btn">Agregar al Carrito</button>
-                                            </form>
-                                          </fieldset>
-                                        </div>
-
                                         <!-- Page 1 Gallery One -->
                                         <li class="selected">
                                             <div class="cd-full-width">
@@ -130,87 +117,7 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                                     <div class="tm-img-gallery-container">
                                                         <div class="tm-img-gallery gallery-one">
                                                         <!-- Gallery One pop up connected with JS code below -->
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/Men/shazamShirtMen.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Playera <span><strong>Shazam</strong></span></h2>
-                                                                        <p class="tm-figure-description">$449.99</p>
-                                                                        <a href="#shopping-popup" class="open-popup-link">View more</a>
-                                                                      <!--  <a href="">View more</a>-->
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/Men/ironmanShirtMen.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Playera <span><strong>Ironman</strong></span></h2>
-                                                                        <p class="tm-figure-description">$410.50</p>
-                                                                        <a href="img/tm-img-02.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/Men/roninShirtMen.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Playera <span><strong>Ronin</strong></span></h2>
-                                                                        <p class="tm-figure-description">$320.50</p>
-                                                                        <a href="img/tm-img-03.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/Men/dpShortsMen.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Shorts <span><strong>Deadpool</strong></span></h2>
-                                                                        <p class="tm-figure-description">$512.00</p>
-                                                                        <a href="img/tm-img-04.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/Men/capAmShirtMen.png" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Playera <span><strong>Capitán América</strong></span></h2>
-                                                                        <p class="tm-figure-description">$320.50</p>
-                                                                        <a href="img/tm-img-05.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/Men/quantumShirtMen.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Playera <span><strong>Quantum</strong></span></h2>
-                                                                        <p class="tm-figure-description">$410.50</p>
-                                                                        <a href="img/tm-img-06.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/Men/paletasShirtMen.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Playera <span><strong>Paletas</strong></span></h2>
-                                                                        <p class="tm-figure-description">$449.99</p>
-                                                                        <a href="img/tm-img-07.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/Men/capmarvelShirtMen.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Playera <span><strong>Capitana Marvel</strong></span></h2>
-                                                                        <p class="tm-figure-description">$449.99</p>
-                                                                        <a href="img/tm-img-08.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
+                                                            <?php include 'php/popUpShopH.php';?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -224,88 +131,7 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                                     <div class="tm-img-gallery-container">
                                                         <div class="tm-img-gallery gallery-two">
                                                         <!-- Gallery Two pop up connected with JS code below -->
-
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/women/ironmanShirtWomen.png" alt="Image" class="img-fluid tm-img">
-
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Playera <span><strong>Ironman</strong></span></h2>
-                                                                        <p class="tm-figure-description">$320.50</p>
-                                                                        <a href="img/tm-img-12.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/women/avengersShirtWomen.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Playera <span><strong>Avengers</strong></span></h2>
-                                                                        <p class="tm-figure-description">$410.50</p>
-                                                                        <a href="img/tm-img-11.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/women/endgameShirtWomen.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Playera <span><strong>Endgame</strong></span></h2>
-                                                                        <p class="tm-figure-description">$499.99</p>
-                                                                        <a href="img/tm-img-10.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/women/batGirlShirtWomen.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Playera <span><strong>Batgirl</strong></span></h2>
-                                                                        <p class="tm-figure-description">$499.99</p>
-                                                                        <a href="img/tm-img-09.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/women/rocketShirtWomen.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Playera <span><strong>Rocket</strong></span></h2>
-                                                                        <p class="tm-figure-description">$410.50</p>
-                                                                        <a href="img/tm-img-08.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/women/capmarvelShirtWomen.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Playera <span><strong>Capitana Marvel</strong></span></h2>
-                                                                        <p class="tm-figure-description">$390.50</p>
-                                                                        <a href="img/tm-img-07.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/women/infinityShirtWomen.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Playera <span><strong>Infinty War</strong></span></h2>
-                                                                        <p class="tm-figure-description">$410.50</p>
-                                                                        <a href="img/tm-img-06.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/women/capAmShirtWomen.png" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Playera <span><strong>Capitán América</strong></span></h2>
-                                                                        <p class="tm-figure-description">$320.50</p>
-                                                                        <a href="img/tm-img-05.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
+                                                            <?php include 'php/popUpShopM.php';?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -319,87 +145,7 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                                     <div class="tm-img-gallery-container">
                                                         <div class="tm-img-gallery gallery-three">
                                                         <!-- Gallery Two pop up connected with JS code below -->
-
-                                                             <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/Other/funko_hawkeye.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Funko <span><strong>Hawkeye</strong></span></h2>
-                                                                        <p class="tm-figure-description">$329.00</p>
-                                                                        <a href="img/tm-img-07.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/Other/shieldOtros.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Escudo <span><strong>Capitán América</strong></span></h2>
-                                                                        <p class="tm-figure-description">$3,450.90</p>
-                                                                        <a href="img/tm-img-16.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/Other/funko_thanos.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Funko <span><strong>Thanos</strong></span></h2>
-                                                                        <p class="tm-figure-description">$329.00</p>
-                                                                        <a href="img/tm-img-02.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/Other/batarangOtros.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Batarang <span><strong>Batman</strong></span></h2>
-                                                                        <p class="tm-figure-description">$1,200.00</p>
-                                                                        <a href="img/tm-img-15.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/Other/quantumOtros.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Gorra <span><strong>Quantum</strong></span></h2>
-                                                                        <p class="tm-figure-description">$320.50</p>
-                                                                        <a href="img/tm-img-03.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/Other/funko_thor.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Funko <span><strong>Thor</strong></span></h2>
-                                                                        <p class="tm-figure-description">$329.00</p>
-                                                                        <a href="img/tm-img-14.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/Other/infinityOtros.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Guantelente <span><strong>Thanos</strong></span></h2>
-                                                                        <p class="tm-figure-description">$2,980.70</p>
-                                                                        <a href="img/tm-img-04.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
-                                                            <div class="grid-item">
-                                                                <figure class="effect-sadie">
-                                                                    <img src="img/Other/ironspider_chain.jpg" alt="Image" class="img-fluid tm-img">
-                                                                    <figcaption>
-                                                                        <h2 class="tm-figure-title">Llavero <span><strong>Spiderman</strong></span></h2>
-                                                                        <p class="tm-figure-description">$120.50</p>
-                                                                        <a href="img/tm-img-13.jpg">View more</a>
-                                                                    </figcaption>
-                                                                </figure>
-                                                            </div>
+                                                            <?php include 'php/popUpShopO.php';?>
                                                         </div>
                                                     </div> <!-- .tm-img-gallery-container -->
                                                 </div>
@@ -412,7 +158,7 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                                 <div class="container-fluid js-tm-page-content tm-page-width tm-pad-b" data-page-no="4">
 
                                                     <div class="tm-about-page">
-
+                                                      <!--Testing
                                                     	<div class="row tm-white-box-margin-b">
                                                             <div class="col-xs-12">
                                                                 <div class="tm-flex">
@@ -459,7 +205,7 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
 
                                                     </div>
 
