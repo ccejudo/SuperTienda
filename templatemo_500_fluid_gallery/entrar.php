@@ -39,9 +39,7 @@ if($count==1){
     session_start();
     $_SESSION['loggedin'] = true;
     $_SESSION['username'] = $username;  
-    echo '<script type="text/javascript">
-           window.location = "http://serene-savannah-13260.herokuapp.com"
-      </script>';
+    include 'index-color.php';
 }else{
     echo '<script type="text/javascript">
            window.location = "http://theroommovie.com/"
