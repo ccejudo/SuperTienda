@@ -16,10 +16,9 @@
         }
 
 ?>
-<?php  
-
-$username=$_POST['log_user']; 
-$password=$_POST['log_pass']; 
+<?php
+$username=$_POST['log_user'];
+$password=$_POST['log_pass'];
 
 // To protect MySQL injection
 $username = stripslashes($username);
@@ -28,7 +27,7 @@ $username = mysqli_real_escape_string($connection,$username);
 $password = mysqli_real_escape_string($connection,$password);
 
 $sql = "SELECT * FROM CLIENTE WHERE username='$username' and password='$password'";
-$nombre = "SELECT cliente_nombre FROM CLIENTE wHERE username='$username' and password='$password'";
+$nombre = "SELECT cliente_nombre FROM CLIENTE WHERE username='$username' and password='$password'";
 $result=mysqli_query($connection,"$sql");
 
 // Mysql_num_row is counting table row
@@ -38,7 +37,7 @@ $count=mysqli_num_rows($result);
 if($count==1){
     session_start();
     $_SESSION['loggedin'] = true;
-    $_SESSION['username'] = $username;  
+    $_SESSION['username'] = $username;
     echo '<script type="text/javascript">
            window.location = "http://serene-savannah-13260.herokuapp.com"
       </script>';

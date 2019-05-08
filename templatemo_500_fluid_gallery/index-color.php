@@ -140,13 +140,13 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                                 <div class="container-fluid js-tm-page-content tm-page-width tm-pad-b" data-page-no="4">
 
                                                     <div class="tm-about-page">
-                                                     
+
                                                      <div class="row tm-white-box-margin-b">
                                                             <div class="col-xs-12">
                                                                 <div class="tm-flex">
                                                                     <div class="tm-bg-white-translucent text-xs-left tm-textbox tm-textbox-padding">
                                                                         <a class="navbar-brand text-uppercase" href=""><img src="img/Shopping-Cart-icon.png" alt="Super Tienda" ></i></a>
-                                                                      
+
                                                                         <h2 class="tm-text-title">CARRITO CRISTOPHER</h2>
                                                                         <br /> <br />
                                                                         <!--Table Style-->
@@ -197,7 +197,7 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                                     <div class="tm-contact-page">
                                                         <div class="row">
                                                             <div class="col-xs-12">
-                                                                
+
                                                                 <?php include 'entrar2.php';?>
                                                             </div>
 

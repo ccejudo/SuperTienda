@@ -1,5 +1,6 @@
 <?php
 	$quer = mysqli_query($connection, "select * from PRODUCTO where cat_id = 'HOM' and (pro_talla = 'S' or pro_talla = 'U');");
+	//$username=$_POST['log_user'];
 
 	while ($row_as = mysqli_fetch_assoc($quer)) {
 		echo "<div class='grid-item'>";
