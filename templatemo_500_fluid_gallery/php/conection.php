@@ -4,10 +4,10 @@
         ini_set('display_errors', 1);
 
 
-    $server = "127.0.0.1";
-    $username = "ccejudo";
-    $password = "pinguino";
-    $db = "supertienda";
+    $server = "";
+    $username = "";
+    $password = "";
+    $db = "";
 
     $connection = mysqli_connect("$server", "$username", "$password", "$db");
 
