@@ -50,25 +50,7 @@ http://www.templatemo.com/tm-500-fluid-gallery
     <body>
 
       <!--Connection to mysql-->
-      <?php
-
-              error_reporting(E_ALL);
-              ini_set('display_errors', 1);
-
-
-      		$server = "";
-      		$username = "";
-      		$password = "";
-      		$db = "";
-
-      		$connection = mysqli_connect("$server", "$username", "$password", "$db");
-
-              if (!$connection){
-                      die("NO SE LOGRÓ CONECTAR CON EL SERVIDOR");
-              }
-
-              //$quer = mysqli_query($connection, "select * from supertienda.PRODUCTO where cat_id = 'HOM';");
-      ?>
+      <?php include 'php/conection.php';?>
 
         <!-- Content -->
         <div class="cd-hero">
