@@ -223,7 +223,6 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                                     <div class="tm-contact-page">
                                                         <div class="row">
                                                             <div class="col-xs-12">
-                                                                
                                                                 <?php include 'entrar2.php';?>
                                                             </div>
 

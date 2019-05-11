@@ -1,9 +1,10 @@
 <?php
- 
-$nombre = $_SESSION['name_user'];
-$user = $_SESSION['username'];
 
- $quer = mysqli_query($connection, "select car_id, car_cliente, PRODUCTO.pro_tipo, PRODUCTO.pro_nombre, PRODUCTO.pro_id, PRODUCTO.pro_precio, ITEM_CARRITO.item_cantidad, ITEM_CARRITO.precio_total
+if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+	$nombre = $_SESSION['name_user'];
+	$user = $_SESSION['username'];
+
+	$quer = mysqli_query($connection, "select car_id, car_cliente, PRODUCTO.pro_tipo, PRODUCTO.pro_nombre, PRODUCTO.pro_id, PRODUCTO.pro_precio, ITEM_CARRITO.item_cantidad, ITEM_CARRITO.precio_total
 from CARRITO
 inner join CLIENTE
 on CARRITO.car_cliente = CLIENTE.username
@@ -21,4 +22,7 @@ on ITEM_CARRITO.item_producto = PRODUCTO.pro_id where CLIENTE.username  = '$user
    echo "<td><button type='submit' class='pull-xs-right tm-submit-btn'>Remover</button></td>";
    echo "</tr>";
  }
+
+} 
+
 ?>
