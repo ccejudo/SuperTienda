@@ -1,25 +1,10 @@
 <?php
-
-        error_reporting(E_ALL);
-        ini_set('display_errors', 1);
-
-
-        $server = "us-cdbr-iron-east-02.cleardb.net";
-        $username = "be18eab0a5770f";
-        $password = "660ce38b";
-        $db = "heroku_0f8b4834c941ffd";
-
-    $connection = mysqli_connect("$server", "$username", "$password", "$db");
-
-        if (!$connection){
-                die("NO SE LOGRÓ CONECTAR CON EL SERVIDOR");
-        }
-
+  include 'conection.php';
 ?>
-<?php  
+<?php
 
-$username=$_POST['log_user']; 
-$password=$_POST['log_pass']; 
+$username=$_POST['log_user'];
+$password=$_POST['log_pass'];
 
 // To protect MySQL injection
 $username = stripslashes($username);
@@ -38,7 +23,7 @@ echo "asdasfasaas ****************";
 if($count==1){
     session_start();
     $_SESSION['loggedin'] = true;
-    $_SESSION['username'] = $username;	
+    $_SESSION['username'] = $username;
 	echo "SIMON";
 	include 'popUpShopM.php';
 }else{

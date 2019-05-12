@@ -1,11 +1,5 @@
 <?php
-	if(isset($_POST['search_button'])){
-		$search = $_POST['search'];
-		include 'popUpSearch.php';
-	}
-	else {
-		$quer = mysqli_query($connection, "select * from PRODUCTO where cat_id = 'HOM' and (pro_talla = 'S' or pro_talla = 'U');");
-		//$username=$_POST['log_user'];
+		$quer = mysqli_query($connection, "select * from PRODUCTO where (pro_nombre like '%$search%' or pro_tipo like '%$search%') and (pro_talla = 'S' or pro_talla is NULL or pro_talla = 'U');");
 
 		while ($row_as = mysqli_fetch_assoc($quer)) {
 			echo "<div class='grid-item'>";
@@ -74,5 +68,4 @@
 			echo "</fieldset>";
 		echo "</div>";
 		}
-	}
 ?>

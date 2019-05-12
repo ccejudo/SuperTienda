@@ -1,19 +1,6 @@
 <?php
 
-        error_reporting(E_ALL);
-        ini_set('display_errors', 1);
-
-
-        $server = "us-cdbr-iron-east-02.cleardb.net";
-        $username = "be18eab0a5770f";
-        $password = "660ce38b";
-        $db = "heroku_0f8b4834c941ffd";
-
-    $connection = mysqli_connect("$server", "$username", "$password", "$db");
-
-        if (!$connection){
-                die("NO SE LOGRÓ CONECTAR CON EL SERVIDOR");
-        }
+        include 'conection.php';
 
 ?>
 <?php
@@ -33,7 +20,7 @@ $nombre=$row['cliente_nombre'];
 
 // Mysql_num_row is counting table row
 $count=mysqli_num_rows($result);
-//dffsdsffsf
+
 // If result matched $username and $password, table row must be 1 row
 if($count==1){
     session_start();
@@ -43,8 +30,9 @@ if($count==1){
     include 'index-color.php';
 }else{
     echo '<script type="text/javascript">
-           window.location = "http://theroommovie.com/"
+           alert("Usuario o contraseña incorrectos");
       </script>';
+    include 'index-color.php';
 }
 
 ?>

@@ -54,9 +54,46 @@ http://www.templatemo.com/tm-500-fluid-gallery
 </head>
 
     <body>
+      <?php
+      //Connection to mysql
+      include 'conection.php';
 
-      <!--Connection to mysql-->
-      <?php include 'conection.php';?>
+      if(isset($_POST['addToCart'])){
+        include 'addCarrito.php';
+      }
+
+      if(isset($_POST['removeFromCart'])){
+        $item_carrito = $_POST['car_id'];
+        $item_producto = $_POST['pro_id'];
+        $item_cantidad = $_POST['item_cantidad'];
+        $pro_stock = $_POST['pro_stock'];
+        $current_cantidad = 0;
+
+        $current_cantidad = $pro_stock + $item_cantidad;
+        $update_aft_remove = mysqli_query($connection, "update `PRODUCTO` SET `pro_stock` = '$current_cantidad' WHERE `pro_id` = '$item_producto';");
+        $remove_sql = mysqli_query($connection, "delete from ITEM_CARRITO where item_carrito = '$item_carrito' and item_producto = '$item_producto';");
+      }
+
+      if(isset($_POST['clearCart'])){
+        $item_carrito = $_POST['car_id'];
+        $cliente = $_POST['cliente'];
+        $compra_total = $_POST['compra_total'];
+
+        $insert_compra = mysqli_query($connection, "insert into COMPRA (compra_total, car_cliente, car_id) values ($compra_total, '$cliente', $item_carrito);");
+        $remove_sql = mysqli_query($connection, "delete from ITEM_CARRITO where item_carrito = '$item_carrito';");
+      }
+
+      if(isset($_POST['removeProduct'])){
+        $item_product = $_POST['product'];
+        $remove_sql = mysqli_query($connection, "delete from PRODUCTO where pro_id = '$item_product';");
+      }
+
+      if(isset($_POST['removeUser'])){
+        $realuser = $_POST['user'];
+        $remove_sql = mysqli_query($connection, "delete from CLIENTE where username = '$realuser';");
+      }
+
+      ?>
 
         <!-- Content -->
         <div class="cd-hero">
@@ -68,12 +105,16 @@ http://www.templatemo.com/tm-500-fluid-gallery
 
                         <a class="navbar-brand text-uppercase" href="#"><img src="img/Superman.png" alt="Super Tienda" ></i>Super Tienda</a>
 
-
+                        <form class="example" action="index-color.php" method="post" style="margin:auto;max-width:300px">
+                          <input type="text" placeholder="Search.." name="search">
+                          <button type="submit" name='search_button'><i class="fa fa-search"></i></button>
+                        </form>
                                                 <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#tmNavbar">
                                                     &#9776;
                                                 </button>
                                                 <div class="collapse navbar-toggleable-md text-xs-center text-uppercase tm-navbar" id="tmNavbar">
                                                     <ul class="nav navbar-nav">
+
                                                         <li class="nav-item active selected">
                                                             <a class="nav-link" href="#0" data-no="1">HOMBRES <span class="sr-only">(current)</span></a>
                                                         </li>
@@ -105,7 +146,6 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                     </div>
 
                                     <ul class="cd-hero-slider">
-
                                         <!-- Page 1 Gallery One -->
                                         <li class="selected">
                                             <div class="cd-full-width">
@@ -166,44 +206,54 @@ http://www.templatemo.com/tm-500-fluid-gallery
 
                                                                         if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
                                                                             echo "".$_SESSION["name_user"]."";
+
                                                                         }else{
                                                                             echo "INVITADO";
                                                                         }
-
-
                                                                         ?> </h2>
+
+                                                                        <?php
+                                                                          if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true){
+                                                                            echo"<style>
+                                                                            table {
+                                                                              font-family: arial, sans-serif;
+                                                                              border-collapse: collapse;
+                                                                              width: 100%;
+                                                                            }
+
+                                                                            td, th {
+                                                                              border: 1px solid #dddddd;
+                                                                              text-align: left;
+                                                                              padding: 8px;
+                                                                            }
+
+                                                                            tr:nth-child(even) {
+                                                                              background-color: #dddddd;
+                                                                            }
+                                                                            </style>
+
+                                                                            <table id='cartTable'>
+                                                                              <tr>
+                                                                                <th>ITEM</th>
+                                                                                <th>CANTIDAD</th>
+                                                                                <th>PRECIO</th>
+                                                                                <th>TOTAL</th>
+                                                                                <th></th>
+                                                                              </tr>";
+
+                                                                            $_SESSION['total'] = 0;
+                                                                            include 'carrito.php';
+                                                                          }
+                                                                          else {
+                                                                            echo "<br /> <br />
+                                                                            <h3 class='tm-text-title'>¡Bienvenido a la SUPERTIENDA!</h3>
+                                                                        		<p class='tm-text'>Para poder acceder a tu carrito, incia sesión o crea una cuenta para iniciar la SUPER-experiencia!</p>";
+                                                                          }
+                                                                        ?>
 
 
                                                                         <br /> <br />
-                                                                        <!--Table Style-->
-                                                                        <style>
-                                                                        table {
-                                                                          font-family: arial, sans-serif;
-                                                                          border-collapse: collapse;
-                                                                          width: 100%;
-                                                                        }
 
-                                                                        td, th {
-                                                                          border: 1px solid #dddddd;
-                                                                          text-align: left;
-                                                                          padding: 8px;
-                                                                        }
-
-                                                                        tr:nth-child(even) {
-                                                                          background-color: #dddddd;
-                                                                        }
-                                                                        </style>
-
-                                                                        <table>
-                                                                          <tr>
-                                                                            <th>ITEM</th>
-                                                                            <th>CANTIDAD</th>
-                                                                            <th>PRECIO</th>
-                                                                            <th>TOTAL</th>
-                                                                            <th></th>
-                                                                          </tr>
-                                                                          <?php include 'carrito.php';?>
-                                                                        </table>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -239,6 +289,7 @@ http://www.templatemo.com/tm-500-fluid-gallery
 
                                     <footer class="tm-footer">
 
+
                                         <div class="tm-social-icons-container text-xs-center">
                                             <a href="#" class="tm-social-link"><i class="fa fa-facebook"></i></a>
                                             <a href="#" class="tm-social-link"><i class="fa fa-google-plus"></i></a>
@@ -269,6 +320,9 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                 <script src="js/bootstrap.min.js"></script>             <!-- Bootstrap js (v4-alpha.getbootstrap.com/) -->
                                 <script src="js/hero-slider-main.js"></script>          <!-- Hero slider (https://codyhouse.co/gem/hero-slider/) -->
                                 <script src="js/jquery.magnific-popup.min.js"></script> <!-- Magnific popup (http://dimsemenov.com/plugins/magnific-popup/) -->
+
+
+
 
                                 <script>
 
@@ -301,6 +355,19 @@ http://www.templatemo.com/tm-500-fluid-gallery
                                             $('.cd-hero-slider').removeClass('small-screen');
                                             $('.cd-hero-slider li:nth-of-type(' + pageNo + ')').css("min-height", "100%");
                                         }
+                                    }
+
+
+                                    function logInAlert() {
+                                      alert("Inicia sesión para poder agregar a tu carrito");
+                                    }
+
+                                    function addedToCartAlert() {
+                                      alert("¡Artículo agregado exitosamente!");
+                                    }
+
+                                    function notAddedToCartAlert() {
+                                      alert("Lo lamentanos, el artículo requerido se encuentra fuera de stock");
                                     }
 
                                     /*
